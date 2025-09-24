@@ -1,0 +1,8 @@
+# Pasta de compilação
+build/
+bin/
+
+# Arquivos gerados pela compilação
+*.o
+*.a
+*.exe
