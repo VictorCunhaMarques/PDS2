@@ -51,10 +51,8 @@ void Projeto::set_dono_id(int dono) {
 }
 
 bool Projeto::adicionar_tarefa(const std::string& descricao, int& out_tarefa_id) {
-    Tarefa aux;
-    out_tarefa_id = aux.get_id();
-    aux.set_descricao(descricao);
-    _tarefas[_num_tarefas] = aux;
+    _tarefas[_num_tarefas] = Tarefa(descricao);
+    out_tarefa_id = _tarefas[_num_tarefas].get_id();
     _num_tarefas++;
     
     return true;
@@ -71,13 +69,14 @@ bool Projeto::atualizar_tarefa(int id_tarefa, const std::string& novo_status) {
 }
 
 bool Projeto::remover_tarefa(int id_tarefa) {
-    _tarefas[id_tarefa].set_status("Removido");
-    if (_tarefas[id_tarefa].get_status() == "Removido") {
-        return true;
-    }
-    else {
+    if(id_tarefa >= _num_tarefas) {
         return false;
     }
+    for (int i = id_tarefa;i < (_num_tarefas - 1);i++) {
+        _tarefas[i] = _tarefas[i + 1];
+    }
+    _num_tarefas--;
+    return true;
 }
 
 const Tarefa* Projeto::buscar_tarefa(int id_tarefa) const {
