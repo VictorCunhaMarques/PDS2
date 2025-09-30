@@ -61,11 +61,13 @@ int main(void) {
         }
         case 5: {
             int id;
+            std::cin >> id;
             gerenciador_de_projetos.remover_projeto(id);
             break;
         }
         case 6: {
             int id;
+            std::cin >> id;
             gerenciador_de_projetos.buscar_projeto(id);
             break;
         }
