@@ -141,6 +141,6 @@ void Sistema::listar_tarefas(int id_projeto) const {
     }
     const Tarefa* tarefas_temp = _projetos[id_projeto].get_tarefas();
     for (int i = 0; i < _projetos[id_projeto].get_num_tarefas();i++) {
-        std::cout << tarefas_temp->get_id() << " " << tarefas_temp->get_descricao() << " " << tarefas_temp->get_status() << std::endl;
+        std::cout << tarefas_temp[i].get_id() << " " << tarefas_temp[i].get_descricao() << " " << tarefas_temp[i].get_status() << std::endl;
     }
 }
